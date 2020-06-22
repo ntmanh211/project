@@ -5,22 +5,23 @@ import numpy as np
 from keras.models import Sequential
 import Data_helper
 import BuildModel
+import pickle
 
-with open('./log.txt','w'): pass
+# with open('./log.txt','w'): pass
 
-def save_acc(name, history):
-    his = history.history
-    train_loss = his['loss']
-    train_acc = his['accuracy']
-    test_loss = his['val_loss']
-    test_acc = his['val_accuracy']
-    f = open('./log.txt','a')
-    f.write('----- With model {} -----'.format(name))
-    for trl, tra, tl, ta in zip(train_loss, train_acc, test_loss, test_acc):
-        line = 'Train loss: {}, Train_acc: {}, Test_loss: {}, Test_acc: {}\n'.format(trl,tra,tl,ta)
-        f.write(line)
-    f.write('=====================================')
-    f.close()
+# def save_acc(name, history):
+#     his = history.history
+#     train_loss = his['loss']
+#     train_acc = his['accuracy']
+#     test_loss = his['val_loss']
+#     test_acc = his['val_accuracy']
+#     f = open('./log.txt','a')
+#     f.write('----- With model {} -----'.format(name))
+#     for trl, tra, tl, ta in zip(train_loss, train_acc, test_loss, test_acc):
+#         line = 'Train loss: {}, Train_acc: {}, Test_loss: {}, Test_acc: {}\n'.format(trl,tra,tl,ta)
+#         f.write(line)
+#     f.write('=====================================')
+#     f.close()
     
 if __name__ == "__main__":
     MEMORY_MB_MAX = 160000 # maximum memory you can use
@@ -74,7 +75,8 @@ if __name__ == "__main__":
                   epochs=epochs,
                   verbose=2,
                   batch_size=batch_size_L1)
-        save_acc('RNN level 1', history)
+#         save_acc('RNN level 1', history)
+        pickle.dump(history, open('./Model-L1/history-RNN.pkl', 'wb' )) 
 
     HDLTex = [] # Level 2 models is list of Deep Structure
     ######################DNN Level 2################################
@@ -111,6 +113,7 @@ if __name__ == "__main__":
                           epochs=epochs,
                           verbose=2,
                           batch_size=batch_size_L2)
-            save_acc('RNN level 2 - {}'.format(i), history)
+#             save_acc('RNN level 2 - {}'.format(i), history)
+            pickle.dump(history, open('./Model-L2/history-RNN-{}.pkl'.format(str(i)), 'wb')) 
                
     
