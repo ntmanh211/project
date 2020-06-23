@@ -104,6 +104,7 @@ if __name__ == "__main__":
                           batch_size=batch_size_L2)
     ######################RNN Level 2################################
     if L2_model == 2:
+        print("Train model RNN L2")
         for i in range(0, number_of_classes_L1):
             print('Create Sub model of ', i)
             HDLTex.append(Sequential())
