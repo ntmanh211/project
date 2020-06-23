@@ -76,7 +76,7 @@ if __name__ == "__main__":
                   verbose=2,
                   batch_size=batch_size_L1)
 #         save_acc('RNN level 1', history)
-        pickle.dump(history, open('./Model-L1/history-RNN.pkl', 'wb' )) 
+        pickle.dump(history, open('history-RNN.pkl', 'wb' )) 
 
     HDLTex = [] # Level 2 models is list of Deep Structure
     ######################DNN Level 2################################
@@ -115,6 +115,6 @@ if __name__ == "__main__":
                           verbose=2,
                           batch_size=batch_size_L2)
 #             save_acc('RNN level 2 - {}'.format(i), history)
-            pickle.dump(history, open('./Model-L2/history-RNN-{}.pkl'.format(str(i)), 'wb')) 
+            pickle.dump(history, open('history-RNN-{}.pkl'.format(str(i)), 'wb')) 
                
     
