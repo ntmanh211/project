@@ -62,7 +62,7 @@ def loadData_Tokenizer(MAX_NB_WORDS,MAX_SEQUENCE_LENGTH):
     with open(fname) as f:
         content = f.readlines()
         content = [clean_str(x) for x in content]
-    content = np.array(content)
+#     content = np.array(content)
     with open(fnamek) as fk:
         contentk = fk.readlines()
     contentk = [x.strip() for x in contentk]
